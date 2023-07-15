@@ -1,4 +1,7 @@
-const setupInput = function () {
+let connection;
+
+const setupInput = function (conn) {
+  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
@@ -8,25 +11,22 @@ const setupInput = function () {
   return stdin;
 };
 
+
+
 const handleUserInput = function (key) {
   if (key === '\u0003') {
     process.exit();
   }
   
   let alphabet = {
-    w : "\u0087",
-    a : "\u0065",
-    d : "\u0068",
-    s : "\u0083"
+    w : "Move: up",
+    a : "Move: left",
+    d : "Move: right",
+    s : "Move: down"
   }
-  let keyboard = key;
-  for (const direction in alphabet) {
-    if (keyboard === direction) {
-      connection.write(alphabet[direction]);
-     }
-  }
+  if (key in alphabet)
+  connection.write(alphabet[key]);
 };
 
-setupInput();
 
 module.exports = {setupInput}
