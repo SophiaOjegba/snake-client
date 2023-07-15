@@ -31,6 +31,7 @@ const connect = function () {
       currentDirection = movement;
     }
   });
+  
 
   return {
     conn,
@@ -39,9 +40,10 @@ const connect = function () {
 };
 
 console.log("Connecting ...");
-const { conn, getCurrentDirection } = connect();
+/*const { conn, getCurrentDirection } = connect();
 
 // Move the snake up after a delay of 3 seconds if not moving down
+
 setTimeout(() => {
   if (getCurrentDirection() !== "down") {
     conn.write("Move: up");
@@ -61,5 +63,6 @@ setTimeout(() => {
     conn.write("Move: down");
   }
 }, 9000);
+*/
 
 module.exports = { connect };
