@@ -1,6 +1,8 @@
+// Importing net module
 const net = require("net");
+
+// Importing the "IP, PORT" property from the "constants" module
 const { PORT, IP } = require("./constants");
-let connections = [];
 
 // Establishes a connection with the game server
 const connect = function () {
@@ -12,6 +14,7 @@ const connect = function () {
   // Interpret incoming data as text
   conn.setEncoding("utf8");
 
+  //sending a message to the client from server
   conn.on("data", (data) => {
     console.log("Server says:", data);
   });
@@ -30,4 +33,5 @@ const connect = function () {
 
 console.log("Connecting ...");
 
+//exporting connect function
 module.exports = { connect };
