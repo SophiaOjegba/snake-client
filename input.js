@@ -1,3 +1,5 @@
+const { stdin } = require("process");
+
 let connection;
 
 const setupInput = function (conn) {
@@ -16,7 +18,11 @@ const setupInput = function (conn) {
 const handleUserInput = function (key) {
   if (key === '\u0003') {
     process.exit();
-  }
+  }else if (key === 'n') {
+    //user chat message
+  connection.write("Say: Hello")
+}
+
   
   let alphabet = {
     w : "Move: up",
@@ -26,6 +32,7 @@ const handleUserInput = function (key) {
   }
   if (key in alphabet)
   connection.write(alphabet[key]);
+
 };
 
 
